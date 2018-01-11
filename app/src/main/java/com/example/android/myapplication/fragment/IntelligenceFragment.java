@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,7 +92,7 @@ public class IntelligenceFragment extends Fragment implements ViewPager.OnPageCh
         });
         initView(view);
         initRollPager(view);
-        SharedPreferences preferences = getActivity().getSharedPreferences(Constant.USER_CONSERVE, Context.MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(Constant.SAVE, Context.MODE_PRIVATE);
         String city = preferences.getString(Constant.CITY, "defaultname");
         //查询天气
         sendRequestWithHttpClient(TextUtils.isEmpty(city) ? "北京" : city);
