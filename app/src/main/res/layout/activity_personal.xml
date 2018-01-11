@@ -10,17 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/line_bg" />
-
     <RelativeLayout
         android:id="@+id/mine_persona_info"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:background="#ffffff">
 
         <com.example.android.myapplication.views.CircleImageView
@@ -49,10 +42,6 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/line_bg" />
 
     <View
         android:layout_width="match_parent"
@@ -64,9 +53,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_linea"
+        android:background="#ffffff"
         android:clickable="true"
-        android:onClick="MineOnclick"
-        android:background="#ffffff">
+        android:onClick="MineOnclick">
 
         <ImageView
             android:id="@+id/mine_order_img"
@@ -83,7 +72,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/mine_order_img"
-            android:text="账户信息"
+            android:text="用户名"
             android:textColor="#666666"
             android:textSize="15sp"
             android:typeface="normal" />
@@ -295,8 +284,6 @@
         android:id="@+id/mine_member"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:clickable="true"
-        android:onClick="SettingOnclick"
         android:background="#ffffff">
 
 

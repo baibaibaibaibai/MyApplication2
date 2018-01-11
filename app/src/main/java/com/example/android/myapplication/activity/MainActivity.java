@@ -3,11 +3,8 @@ package com.example.android.myapplication.activity;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,12 +16,6 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.services.weather.LocalWeatherForecast;
-import com.amap.api.services.weather.LocalWeatherForecastResult;
-import com.amap.api.services.weather.LocalWeatherLive;
-import com.amap.api.services.weather.LocalWeatherLiveResult;
-import com.amap.api.services.weather.WeatherSearch;
-import com.amap.api.services.weather.WeatherSearchQuery;
 import com.example.android.myapplication.R;
 import com.example.android.myapplication.adapter.ViewPagerAdapter;
 import com.example.android.myapplication.base.BaseFragmentActivity;
@@ -37,17 +28,6 @@ import com.example.android.myapplication.fragment.IntelligenceFragment;
 import com.example.android.myapplication.views.MyViewPager;
 import com.example.android.myapplication.utils.UpdateManager;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -351,7 +331,7 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
             amapLocation.getCityCode();//城市编码
             amapLocation.getAdCode();//地区编码
             SharedPreferences flageSp = getSharedPreferences(
-                    Constant.USER_CONSERVE, Activity.MODE_PRIVATE);
+                    Constant.SAVE, Activity.MODE_PRIVATE);
             // 获得SharedPreferences.Editor
             SharedPreferences.Editor editor = flageSp.edit();
             // 获得putXxx对象
