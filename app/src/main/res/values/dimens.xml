@@ -8,11 +8,12 @@
     <dimen name="guide_point_bottom_margin">14dp</dimen>
     <!--action bar -->
     <dimen name="titlebar_height">48dp</dimen>
-    <dimen name="titlebar_left_pad">5dp</dimen>
+    <dimen name="titlebar_left_pad">8dp</dimen>
+    <dimen name="line">0.1dp</dimen>
     <!-- 我的 -->
     <dimen name="mine_linea">45dp</dimen>
     <dimen name="mine_img">20dp</dimen>
-    <dimen name="mine_mores">30dp</dimen>
+    <dimen name="mine_more">20dp</dimen>
 
 
 </resources>

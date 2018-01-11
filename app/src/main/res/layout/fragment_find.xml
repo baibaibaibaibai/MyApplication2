@@ -11,10 +11,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
-    <ListView
-        android:id="@+id/listview"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_bg" />
+    <!--显示网页区域-->
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:dividerHeight="1dp"
-        android:listSelector="@null" />
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/text_endLoading" />
+
 </LinearLayout>

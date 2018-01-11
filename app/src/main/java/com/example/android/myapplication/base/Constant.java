@@ -61,8 +61,8 @@ public final class Constant {
     public static final String USER_FIRST_LOGIN = "first_login";
 
     public static final String USER_CONSERVE = "conserve";
-    public static final String WEATHERR_CONSERVE = "weather";
-    public static final String WEATHERR_TEMPERATURE = "temperature";
+    public static final String CITY = "city";
+
 
 
 

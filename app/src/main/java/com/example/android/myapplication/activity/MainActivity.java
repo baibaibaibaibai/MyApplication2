@@ -54,7 +54,7 @@ import java.util.ArrayList;
  *
  */
 
-public class MainActivity extends BaseFragmentActivity implements View.OnClickListener, AMapLocationListener, WeatherSearch.OnWeatherSearchListener {
+public class MainActivity extends BaseFragmentActivity implements View.OnClickListener, AMapLocationListener{
     private long mExitTime = 0;
     private String changeLog = "";
     private String fileUrl = "";
@@ -79,8 +79,7 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
     private AMapLocationClientOption mLocationOption = null;
     //声明AMapLocationClient类对象
     private AMapLocationClient mLocationClient = null;
-    private WeatherSearchQuery weatherQuery;
-    private WeatherSearch weatherSearch;
+
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
@@ -341,18 +340,7 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
 
     }
 
-    private void sendRequestWithHttpClient(String city) {
-        //检索参数为城市和天气类型，实况天气为WEATHER_TYPE_LIVE、天气预报为WEATHER_TYPE_FORECAST
-        weatherQuery = new WeatherSearchQuery(city, WeatherSearchQuery.WEATHER_TYPE_FORECAST);
-        weatherSearch = new WeatherSearch(this);
-        weatherSearch.setOnWeatherSearchListener(this);
-        weatherSearch.setQuery(weatherQuery);
-        weatherSearch.searchWeatherAsyn(); //异步搜索
-
-    }
-
-
-    /**
+       /**
      * 高德定位回调
      */
     @Override
@@ -362,44 +350,18 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
             Double longitude = amapLocation.getLongitude();
             amapLocation.getCityCode();//城市编码
             amapLocation.getAdCode();//地区编码
-            sendRequestWithHttpClient(amapLocation.getCity());
+            SharedPreferences flageSp = getSharedPreferences(
+                    Constant.USER_CONSERVE, Activity.MODE_PRIVATE);
+            // 获得SharedPreferences.Editor
+            SharedPreferences.Editor editor = flageSp.edit();
+            // 获得putXxx对象
+            editor.putString(Constant.CITY, amapLocation.getCity());
+            // 将数据库保存在文件中
+            editor.commit();
         }
     }
 
-    /**
-     * 实时天气查询回调
-     */
-    @Override
-    public void onWeatherLiveSearched(LocalWeatherLiveResult weatherLiveResult, int rCode) {
-        if (rCode == 1000) {
-            if (weatherLiveResult != null && weatherLiveResult.getLiveResult() != null) {
-                LocalWeatherLive weatherlive = weatherLiveResult.getLiveResult();
 
-//                humidity.setText("湿度         "+weatherlive.getHumidity()+"%");
-            } else {
-                Log.e("", "查询天气失败");
-            }
-        } else {
-            Log.e("", "查询天气失败");
-        }
-    }
-
-    /**
-     * 天气预报
-     *
-     * @param localWeatherForecastResult
-     * @param rCode
-     */
-    @Override
-    public void onWeatherForecastSearched(LocalWeatherForecastResult localWeatherForecastResult, int rCode) {
-        if (rCode == 1000) {
-            LocalWeatherForecast weatherForecast = localWeatherForecastResult.getForecastResult();
-            IntelligenceFragment showFragment = IntelligenceFragment.newInstance(weatherForecast);
-
-        } else {
-            Log.e("", "查询天气失败");
-        }
-    }
 
     @Override
     protected void onDestroy() {

@@ -5,81 +5,47 @@
     android:background="@color/background"
     android:orientation="vertical">
 
+    <com.example.android.myapplication.views.TitleBar
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
+        android:layout_marginTop="10dp"
         android:background="@color/line_bg" />
 
     <RelativeLayout
         android:id="@+id/mine_persona_info"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="140dp"
         android:background="#ffffff">
 
         <com.example.android.myapplication.views.CircleImageView
 
             android:id="@+id/mine_face"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="13dp"
-            android:background="@mipmap/ic_launcher" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/ic_launcher" />
 
 
         <TextView
             android:id="@+id/textmbView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/mine_face"
-            android:text="享受更多服务"
+            android:layout_below="@+id/mine_face"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="农业大棚"
             android:textColor="#000000"
             android:textSize="12sp"
             android:visibility="visible" />
-
-        <TextView
-            android:id="@+id/mine_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            android:layout_toRightOf="@+id/textmbView1"
-            android:text="smfsmgvadf"
-            android:textSize="12sp" />
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:minWidth="50dp"
-            android:onClick="GradeOnclick"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/mine_grade"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/grade_des"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:maxWidth="50dp"
-                android:singleLine="true"
-                android:text="国王/公主"
-                android:textSize="10sp"
-                android:visibility="gone" />
-        </LinearLayout>
 
     </RelativeLayout>
 
@@ -116,14 +82,14 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/mine_order_img"
-            android:text="订单"
+            android:text="账户信息"
             android:textColor="#666666"
             android:textSize="15sp"
             android:typeface="normal" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:src="@mipmap/more" />
@@ -144,6 +110,13 @@
         android:background="#ffffff">
 
         <ImageView
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/more" />
+
+        <ImageView
             android:id="@+id/mine_wallet_img"
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -158,7 +131,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/mine_wallet_img"
-            android:text="钱包"
+            android:text="账户余额"
             android:textColor="#666666"
             android:textSize="15sp"
             android:typeface="sans" />
@@ -179,15 +152,15 @@
         android:background="@color/line_bg" />
 
     <RelativeLayout
-        android:id="@+id/mine_member"
+
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#ffffff">
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:src="@mipmap/more" />
@@ -202,13 +175,12 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/mine_vip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/mine_bv5"
-            android:text="积分"
+            android:text="历史账单"
             android:textColor="#666666"
             android:textSize="15sp"
             android:typeface="serif" />
@@ -229,6 +201,13 @@
         android:background="#ffffff">
 
         <ImageView
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/more" />
+
+        <ImageView
             android:id="@+id/mine_favorite_img"
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -244,7 +223,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/mine_favorite_img"
-            android:text="收藏"
+            android:text="我的策略"
             android:textColor="#666666"
             android:textSize="15sp"
             android:typeface="serif" />
@@ -271,6 +250,13 @@
         android:background="#ffffff">
 
         <ImageView
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/more" />
+
+        <ImageView
             android:id="@+id/mine_order_setting_img"
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -285,18 +271,61 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/mine_order_setting_img"
-            android:text="设置"
+            android:text="我的设备"
             android:textColor="#666666"
             android:textSize="15sp"
             android:typeface="monospace" />
 
         <ImageView
             android:id="@+id/mine_setting_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:src="@mipmap/more" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/line_bg" />
+
+    <RelativeLayout
+        android:id="@+id/mine_member"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff">
+
+
+        <ImageView
+            android:layout_width="@dimen/mine_more"
+            android:layout_height="@dimen/mine_more"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/more" />
+
+        <ImageView
+            android:id="@+id/img6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/img6"
+            android:text="设置"
+            android:textColor="#666666"
+            android:textSize="15sp"
+            android:typeface="serif" />
+
+
     </RelativeLayout>
 
     <View
