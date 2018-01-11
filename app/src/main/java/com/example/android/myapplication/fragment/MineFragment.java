@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.android.myapplication.R;
 import com.example.android.myapplication.activity.PersonalActivity;
+import com.example.android.myapplication.activity.PersonalInfoActivity;
 import com.example.android.myapplication.activity.SettingActivity;
 import com.example.android.myapplication.views.TitleBar;
 
@@ -44,7 +45,7 @@ public class MineFragment extends Fragment {
      * 个人信息
      */
     public void MineOnclick(View view) {
-        Intent intent = new Intent(getActivity(), PersonalActivity.class);
+        Intent intent = new Intent(getActivity(), PersonalInfoActivity.class);
 
         startActivity(intent);
     }
