@@ -26,8 +26,11 @@ import android.widget.TextView;
 import com.example.android.myapplication.R;
 import com.example.android.myapplication.base.BaseActivity;
 import com.example.android.myapplication.base.Constant;
+import com.example.android.myapplication.views.TitleBar;
 
 import java.io.File;
+
+import static android.view.View.GONE;
 
 /**
  * 个人信息
@@ -40,11 +43,11 @@ public class PersonalInfoActivity extends BaseActivity {
             birthday, // 生日
             region, // 地区
             Personal_name;// 相对布局 姓名
-    private TextView bin_no;// 个人姓名
     private static TextView _tProvince;
     private static TextView _tCity;
     private TextView _name;
     private TextView personal_sex;// 性别显示
+    private TitleBar titleBar;
     public static final int NONE = 0;
     public static final int PHOTOHRAPH = 1;// 拍照
     public static final int PHOTOZOOM = 2; // 缩放
@@ -58,10 +61,6 @@ public class PersonalInfoActivity extends BaseActivity {
     private static Context mContext;
     private String img;// image_url 用户头像路径
     public String name1_;
-    private String uid, binzhi_id, name, sex, sexid, ubirthday, city, area,
-            image_url, bzlevel;
-    private TextView title_name;
-    private TextView peason_notice, peason_notice_name;
     private SharedPreferences sp;
     private SharedPreferences sharedPreferences;
     private Handler handler = new Handler() {
@@ -83,12 +82,11 @@ public class PersonalInfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_personal);
+        setContentView(R.layout.activity_personal_info);
         mContext = this;
         sharedPreferences = getSharedPreferences(Constant.SAVE,
                 Activity.MODE_PRIVATE);
-        uid = sharedPreferences.getString("uid", "");
-        sp = getSharedPreferences("com.bzgj.noticewaring", Context.MODE_PRIVATE);
+
         initData();
 
     }
@@ -126,19 +124,20 @@ public class PersonalInfoActivity extends BaseActivity {
 
     private void initData() {
 
+        this.titleBar = ((TitleBar) findViewById(R.id.title));
+        this.titleBar.setTitle("个人信息");
+
+
         personal_info_sex = (RelativeLayout) findViewById(R.id.personal_info_sex);
         personal_info_sex.setOnClickListener(listener);
         personal_sex = (TextView) findViewById(R.id.personal_sex);// 性别
-        title_name = (TextView) findViewById(R.id.title);
+
         ReplaceThepicture = (RelativeLayout) findViewById(R.id.rl1);
 
         Personal_head = (ImageView) findViewById(R.id.imagView_head);
-        peason_notice = (TextView) findViewById(R.id.peason_notice);
-        peason_notice_name = (TextView) findViewById(R.id.peason_notice_name);
 
         ReplaceThepicture.setOnClickListener(listener);
 
-        bin_no = (TextView) findViewById(R.id.text_bin_no);
 
         birthday = (RelativeLayout) findViewById(R.id.rl7);
         region = (RelativeLayout) findViewById(R.id.rl8);
@@ -151,9 +150,7 @@ public class PersonalInfoActivity extends BaseActivity {
         Personal_name = (RelativeLayout) findViewById(R.id.Personal_rl5);
         Personal_name.setOnClickListener(listener);
         _name = (TextView) findViewById(R.id.text_name);
-        title_name.setText("个人信息");
         name1_ = _name.getText().toString().trim();
-        getAppuserByUId(uid);
     }
 
     OnClickListener listener = new OnClickListener() {
@@ -162,46 +159,46 @@ public class PersonalInfoActivity extends BaseActivity {
             Editor edit = sp.edit();
             switch (v.getId()) {
 
-                case R.id.rl1:
-
-                    final String[] str = new String[]{
-                            (String) textView1.getText(),
-                            (String) textView2.getText()};
-                    new AlertDialog.Builder(PersonalInfoActivity.this)
-                            .setTitle("设置头像")
-                            .setItems(str, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int arg1) {
-                                    if (str[arg1].equals("相册")) {
-
-                                        new Thread() {
-                                            @Override
-                                            public void run() {
-                                                Message msg = handler
-                                                        .obtainMessage();
-                                                msg.what = PHOTO;
-                                                Bundle bundle = new Bundle();
-                                                msg.obj = bundle;
-                                                handler.sendMessage(msg);
-                                            }
-                                        }.start();
-
-                                    } else if (str[arg1].equals("拍照")) {
-
-                                        Intent intent2 = new Intent(
-                                                MediaStore.ACTION_IMAGE_CAPTURE);
-                                        intent2.putExtra(
-                                                MediaStore.EXTRA_OUTPUT,
-                                                Uri.fromFile(new File(
-                                                        Environment
-                                                                .getExternalStorageDirectory(),
-                                                        "head.jpg")));
-                                        startActivityForResult(intent2, 422);
-
-                                    }
-                                }
-                            }).setNegativeButton("取消", null).show();
-                    break;
+//                case R.id.rl1:
+//
+//                    final String[] str = new String[]{
+//                            (String) textView1.getText(),
+//                            (String) textView2.getText()};
+//                    new AlertDialog.Builder(PersonalInfoActivity.this)
+//                            .setTitle("设置头像")
+//                            .setItems(str, new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int arg1) {
+//                                    if (str[arg1].equals("相册")) {
+//
+//                                        new Thread() {
+//                                            @Override
+//                                            public void run() {
+//                                                Message msg = handler
+//                                                        .obtainMessage();
+//                                                msg.what = PHOTO;
+//                                                Bundle bundle = new Bundle();
+//                                                msg.obj = bundle;
+//                                                handler.sendMessage(msg);
+//                                            }
+//                                        }.start();
+//
+//                                    } else if (str[arg1].equals("拍照")) {
+//
+//                                        Intent intent2 = new Intent(
+//                                                MediaStore.ACTION_IMAGE_CAPTURE);
+//                                        intent2.putExtra(
+//                                                MediaStore.EXTRA_OUTPUT,
+//                                                Uri.fromFile(new File(
+//                                                        Environment
+//                                                                .getExternalStorageDirectory(),
+//                                                        "head.jpg")));
+//                                        startActivityForResult(intent2, 422);
+//
+//                                    }
+//                                }
+//                            }).setNegativeButton("取消", null).show();
+//                    break;
 
                 default:
                     break;

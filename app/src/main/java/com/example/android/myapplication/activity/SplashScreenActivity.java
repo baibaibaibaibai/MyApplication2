@@ -51,7 +51,7 @@ public class SplashScreenActivity extends BaseActivity {
         // 第一次登录
         else {
             Intent intent = new Intent(SplashScreenActivity.this,
-                    GuideActivity.class); // 从启动动画ui跳转到主ui
+                    MainActivity.class); // 从启动动画ui跳转到主ui
             startActivity(intent);
             SplashScreenActivity.this.finish(); // 结束启动动画界面
         }
