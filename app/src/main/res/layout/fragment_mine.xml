@@ -62,10 +62,10 @@
 
 
     <RelativeLayout
+        android:id="@+id/mine_info"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mine_linea"
-        android:clickable="true"
-        android:onClick="MineOnclick"
+
         android:background="#ffffff">
 
         <ImageView
@@ -196,7 +196,7 @@
         android:background="@color/line_bg" />
 
     <RelativeLayout
-        android:id="@+id/mine_favorite"
+
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#ffffff">
@@ -245,7 +245,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/mine_setting"
+
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#ffffff">
@@ -292,11 +292,10 @@
         android:background="@color/line_bg" />
 
     <RelativeLayout
-        android:id="@+id/mine_member"
+        android:id="@+id/mine_setting"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:clickable="true"
-        android:onClick="SettingOnclick"
+
         android:background="#ffffff">
 
 

@@ -74,7 +74,11 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
-
+        <activity
+            android:name="com.example.android.myapplication.activity.GuideActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <!--高德定位-->
         <service android:name="com.amap.api.location.APSService"></service>
@@ -83,6 +87,7 @@
             android:value="c78b1f9a26252879037e2f0ba359f34a">//开发者申请的key
 
         </meta-data>
+
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.example.android.myapplication.R;
 import com.example.android.myapplication.activity.PersonalActivity;
@@ -20,9 +21,10 @@ import static android.view.View.GONE;
  *
  */
 
-public class MineFragment extends Fragment {
+public class MineFragment extends Fragment implements View.OnClickListener{
     private static final String TAG = "TestFragment";
     private TitleBar titleBar;
+    private RelativeLayout mine_info,mine_setting;
 
     public static MineFragment newInstance(String s) {
         MineFragment homeFragment = new MineFragment();
@@ -45,9 +47,7 @@ public class MineFragment extends Fragment {
      * 个人信息
      */
     public void MineOnclick(View view) {
-        Intent intent = new Intent(getActivity(), PersonalInfoActivity.class);
 
-        startActivity(intent);
     }
 
     /**
@@ -55,16 +55,17 @@ public class MineFragment extends Fragment {
      */
     public void SettingOnclick(View view) {
 
-        Intent intent = new Intent(getActivity(), SettingActivity.class);
 
-        startActivity(intent);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
         initTitleBar(view);
-
+        mine_info=(RelativeLayout) view.findViewById(R.id.mine_info);
+        mine_setting=(RelativeLayout) view.findViewById(R.id.mine_setting);
+        mine_info.setOnClickListener(this);
+        mine_setting.setOnClickListener(this);
         return view;
 
     }
@@ -75,6 +76,22 @@ public class MineFragment extends Fragment {
         this.titleBar.setLeftButtonVisibility(GONE);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.mine_info:
+                Intent intent = new Intent(getActivity(), PersonalInfoActivity.class);
+
+                startActivity(intent);
+                break;
+            case R.id.mine_setting:
+                Intent intent2 = new Intent(getActivity(), SettingActivity.class);
+
+                startActivity(intent2);
+                break;
+
+        }
+    }
 
     @Override
     public void onDestroy() {

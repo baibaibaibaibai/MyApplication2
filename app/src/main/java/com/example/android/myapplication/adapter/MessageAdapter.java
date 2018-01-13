@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.android.myapplication.R;
 import com.example.android.myapplication.entity.MessageEntity;
 
@@ -54,6 +57,7 @@ public class MessageAdapter extends BaseAdapter {
             viewHolder.titleTextView = (TextView) convertView.findViewById(R.id.tv_title);
             viewHolder.dateTextView = (TextView) convertView.findViewById(R.id.tv_time);
             viewHolder.msgTextView = (TextView) convertView.findViewById(R.id.tv_message);
+            viewHolder.img = (ImageView) convertView.findViewById(R.id.img);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -62,7 +66,10 @@ public class MessageAdapter extends BaseAdapter {
 //        viewHolder.titleTextView.setText(messageEntity.get(position).getTitle());
 //        viewHolder.dateTextView.setText(messageEntity.get(position).getTime());
 //        viewHolder.msgTextView.setText(messageEntity.get(position).getMessage());
-
+        Glide.with(mContext)
+                .load("http://7xi8d6.com1.z0.glb.clouddn.com/16124047_121657248344062_4191645221970247680_n.jpg")
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(viewHolder.img);
 
         return convertView;
     }
@@ -72,6 +79,7 @@ public class MessageAdapter extends BaseAdapter {
         TextView titleTextView;
         TextView dateTextView;
         TextView msgTextView;
+        ImageView img;
     }
 
 
